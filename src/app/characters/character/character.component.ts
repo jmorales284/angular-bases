@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-onePiece-character',
+  selector: 'app-characters-character',
   templateUrl: './character.component.html',
   styleUrl: './character.component.css'
 })

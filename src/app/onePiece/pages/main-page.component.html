@@ -1,0 +1,17 @@
+<h1>one piece personajes</h1>
+
+<hr>
+
+<div class="row">
+  <div class="col">
+
+    <onePiece-list (onDeleteCharacter)="onDeleteCharacter($event)" [characterList]="characters"></onePiece-list>
+
+
+
+  </div>
+
+  <div class="col">
+    <onePiece-add-character (onNewCharacter)="onNewCharacter($event)"></onePiece-add-character>
+  </div>
+</div>

@@ -1,27 +1,28 @@
-<h3>Listado de personajes</h3>
-
-<div *ngIf="deletedCharacter; else nothingWasDeleted">
-
-  <h3>Personaje borrado <small class="text-danger">{{deletedCharacter}}</small></h3>
-</div>
-
-
-<ng-template #nothingWasDeleted>
-  <h3>No ha borrado nada.</h3>
-</ng-template>
+<h4>Listado</h4>
+  <ul class="list-group">
+  <li *ngFor="
+    let character of characterList;
+    let i = index;
+    let isFirst = first;
+    let isLast = last;
+    "
 
 
-<button
-*ngIf="characterNames.length > 0"
-  (click)="removeLastCharacter()"
-  class="btn btn-outline-danger">
-  Borrar ultimo personaje
-</button>
+    class="list-group-item d-flex justify-content-between align-items-center"
+    [ngClass]="{
+      'list-group-item-dark': isLast,
+      'list-group-item-primary': isFirst
+    }">
 
 
+    <div>
+      <span class="text-primary"> {{i + 1}}. </span>
+      <span>{{character.name}} - </span>
+      <strong>Recompensa: </strong>
+      <span>{{character.bounty}}</span>
+    </div>
 
-<ul class="mt-2 list-group">
+    <button (click)="deleteCharacter(character.id)" class="btn btn-danger">X</button>
 
-  <li *ngFor="let name of characterNames"
-      class="list-group-item">{{name}}</li>
+  </li>
 </ul>

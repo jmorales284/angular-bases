@@ -1,15 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Character } from '../../interfaces/character.interface';
+import { v4 as uuid } from 'uuid';
+
+
 
 @Component({
-  selector: 'app-onePiece-list',
+  selector: 'onePiece-list',
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
 export class ListComponent {
-  public characterNames: string[] = ['luffy','zoro','nami','sanji','ussop'];
-  public deletedCharacter?: string;
 
-  removeLastCharacter():void {
-    this.deletedCharacter = this.characterNames.pop();
+  @Output()
+  public onDeleteCharacter: EventEmitter<string> = new EventEmitter
+
+  @Input()
+  public characterList: Character[] = [{
+    name: 'teach',
+    bounty: 1234
+  }]
+
+  deleteCharacter(id?: string):void {
+    if (!id) return;
+    this.onDeleteCharacter.emit(id)
   }
+
 }
